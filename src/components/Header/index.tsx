@@ -6,10 +6,13 @@ import searchIcon from '../../assets/images/header/search-icon.png';
 import heartIcon from '../../assets/images/header/heart-icon.png';
 import cartIcon from '../../assets/images/header/cart-icon.png';
 import userIcon from '../../assets/images/header/user-icon.png';
+import { useClerk, useUser } from '@clerk/clerk-react';
 
 const Header = () => {
   const location = useLocation(); 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useUser();
+  const openSignIn = useClerk();
 
  
   const closeMenu = () => setIsMenuOpen(false);
@@ -46,7 +49,7 @@ const Header = () => {
             <div className="flex items-center gap-4">
               <button className="hover:opacity-75"><img src={heartIcon} alt="Ícone de Favoritos" className="w-8 h-8" /></button>
               <button className="hover:opacity-75"><img src={cartIcon} alt="Ícone do Carrinho" className="w-8 h-8" /></button>
-              <button className="hover:opacity-75"><img src={userIcon} alt="Ícone de Usuário" className="w-8 h-8" /></button>
+              <button onClick={() => openSignIn.openSignIn()} className="hover:opacity-75"><img src={userIcon} alt="Ícone de Usuário" className="w-8 h-8" /></button>
             </div>
           </div>
         </div>
