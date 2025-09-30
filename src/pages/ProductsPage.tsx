@@ -29,8 +29,7 @@ const ProductsPage = () => {
     setSelectedBrands([]);
     setPage(1);
   }, [categoryName]);
-
-  // Sempre que selectedBrands mudar, volta para página 1
+  
   useEffect(() => {
     setPage(1);
   }, [selectedBrands]);
